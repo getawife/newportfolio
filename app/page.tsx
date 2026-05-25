@@ -1,65 +1,130 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
+import { useTerminal } from "../config/useTerminal";
 
 export default function Home() {
+  const {
+    history,
+    input,
+    setInput,
+    executeCommand,
+    terminalEndRef,
+    handleKeyDown,
+  } = useTerminal();
+
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+      setIsDarkMode(false);
+    } else {
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    if (isDarkMode) {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDarkMode]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const trimmedInput = input.trim();
+
+    if (trimmedInput) {
+      executeCommand(trimmedInput);
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen bg-zinc-100 text-zinc-900 transition-colors duration-300 dark:bg-[#0d1117] dark:text-white font-mono p-4 md:p-8">
+      <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-zinc-300 bg-white shadow-2xl dark:border-[#30363d] dark:bg-[#161b22]">
+        {/* Top Bar */}
+        <div className="flex items-center justify-between border-b border-zinc-300 bg-zinc-100 px-4 py-3 dark:border-[#30363d] dark:bg-[#21262d]">
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-3 rounded-full bg-red-500" />
+            <div className="h-3 w-3 rounded-full bg-yellow-400" />
+            <div className="h-3 w-3 rounded-full bg-green-500" />
+          </div>
+
+          <span className="text-xs text-zinc-500 dark:text-[#8b949e]">
+            guest@portfolio:~
+          </span>
+
+          <button
+            onClick={() => setIsDarkMode((prev) => !prev)}
+            className="rounded-md p-2 text-zinc-600 transition hover:bg-zinc-200 dark:text-zinc-400 dark:hover:bg-[#30363d]"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {isDarkMode ? (
+              <Sun size={16} className="text-yellow-400" />
+            ) : (
+              <Moon size={16} />
+            )}
+          </button>
         </div>
-      </main>
-    </div>
+
+        <div className="h-[65vh] overflow-y-auto p-4 md:p-6 space-y-4 text-sm md:text-base">
+          {history.map((item, idx) => (
+            <div key={idx} className="space-y-1">
+              {item.command !== "welcome" && (
+                <div className="flex gap-2 text-blue-500 dark:text-[#58a6ff]">
+                  <span>$</span>
+                  <span>{item.command}</span>
+                </div>
+              )}
+
+              <div className="whitespace-pre-wrap leading-relaxed text-zinc-800 dark:text-[#c9d1d9]">
+                {item.output}
+              </div>
+            </div>
+          ))}
+
+          <div ref={terminalEndRef} />
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="flex items-center gap-2 border-t border-zinc-300 bg-zinc-50 p-4 dark:border-[#30363d] dark:bg-[#0d1117]"
+        >
+          <label
+            htmlFor="terminal-input"
+            className="shrink-0 font-bold text-blue-500 dark:text-[#58a6ff]"
+          >
+            guest@portfolio:~$
+          </label>
+
+          <input
+            id="terminal-input"
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            autoFocus
+            autoComplete="off"
+            spellCheck={false}
+            placeholder="Type a command..."
+            className="flex-1 min-w-0 bg-transparent outline-none border-none text-base md:text-sm text-zinc-900 dark:text-white caret-blue-500 dark:caret-white"
+          />
+          <button
+            type="submit"
+            className="shrink-0 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-200 active:scale-95 dark:border-[#30363d] dark:bg-[#161b22] dark:text-[#c9d1d9] dark:hover:bg-[#21262d]"
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </main>
   );
 }
