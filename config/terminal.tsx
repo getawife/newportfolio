@@ -13,19 +13,19 @@ export const COMMANDS: Record<string, CommandResult> = {
   },
   about: {
     output:
-      "A self-taught 17-year-old programmer based in Karachi, Pakistan. Focused on building interactive web applications, high-performance interfaces, and automation tools.",
+      "A self-taught 18-year-old programmer based in Karachi, Pakistan.",
   },
   skills: {
     output: `
   [Languages]    TypeScript, JavaScript, Python, Java, SQL
   [Frontend]     React, Next.js, Tailwind CSS, Electron, Vue
-  [Backend]      Node.js, Express, Docker, Linux Server Admin, Cloud Architecture`,
+  [Backend]      Node.js, Express, Docker, Linux Server, Cloud`,
   },
   projects: {
     output: `
   • Who did it?      - An interactive murder mystery game built on the web.
   • Audio Visualizer - An audio visualizer built for commercial use.
-  • HugABot          - A conversational companion.
+  • HugABot          - AI therapist.
   • Ice              - A multipurpose all-in-one Discord bot.
   • Lexir            - A decentralised chat platform for maximum privacy.
   For a complete list, please visit my Github.`,
