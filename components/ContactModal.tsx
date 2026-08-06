@@ -35,28 +35,28 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/60 backdrop-blur-sm transition-opacity">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/60 p-4 backdrop-blur-sm transition-opacity">
       <div
-        className="relative w-full max-w-lg rounded-2xl border border-zinc-200 bg-white p-6 shadow-2xl dark:border-zinc-800 dark:bg-zinc-900 sm:p-8"
+        className="relative w-full max-w-lg rounded-2xl border border-zinc-200 bg-white p-6 shadow-2xl sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-lg p-1.5 text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+          className="absolute right-4 top-4 rounded-lg p-1.5 text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-700"
         >
           <X className="h-5 w-5" />
         </button>
 
         <div>
           <div className="mb-6">
-            <h3 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+            <h3 className="text-xl font-semibold tracking-tight text-zinc-900">
               Initiate Contact
             </h3>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            <p className="mt-1 text-xs text-zinc-500">
               Direct email:{" "}
               <a
                 href={`mailto:${recipientEmail}`}
-                className="font-mono text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition hover:text-zinc-900 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:text-zinc-100"
+                className="font-mono text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition hover:text-zinc-900"
               >
                 {recipientEmail}
               </a>
@@ -65,7 +65,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              <label className="mb-1 block text-xs font-medium text-zinc-700">
                 Your Name
               </label>
               <input
@@ -74,12 +74,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Alex Morgan"
-                className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:border-zinc-600"
+                className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-zinc-400"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              <label className="mb-1 block text-xs font-medium text-zinc-700">
                 Email Address
               </label>
               <input
@@ -88,12 +88,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="alex@company.com"
-                className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:border-zinc-600"
+                className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-zinc-400"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              <label className="mb-1 block text-xs font-medium text-zinc-700">
                 Message
               </label>
               <textarea
@@ -102,13 +102,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Tell me about your project, timeline, or inquiry..."
-                className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 dark:focus:border-zinc-600"
+                className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3.5 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-zinc-400"
               />
             </div>
 
             <button
               type="submit"
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 py-3 text-xs font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 py-3 text-xs font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50"
             >
               <Send className="h-3.5 w-3.5" />
               <span>Send Message via Email</span>

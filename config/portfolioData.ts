@@ -114,39 +114,4 @@ export const PORTFOLIO_DATA = {
       githubUrl: "https://github.com/getawife/Cloaky",
     },
   ] as Project[],
-
-  experiences: [
-    {
-      period: "2024 — 2026",
-      role: "Web Apps, Creative Tools & AI",
-      company: "Personal & Open Source Projects",
-      description:
-        "Built interactive web applications, interactive audio visualizers, and personal side projects.",
-      highlights: [
-        "Created a personal technical blog, an audio visualizer, and the HugABot listener.",
-        "Developed custom tools and bots including Sharksnot and 'Who did it?'.",
-      ],
-    },
-    {
-      period: "2021 — 2024",
-      role: "Frontend Utilities & Infrastructure",
-      company: "Personal Projects",
-      description:
-        "Focused on lightweight web utilities, frontend tools, and automated community utilities.",
-      highlights: [
-        "Built web tools and apps including Cloaky, Gradients, Lexir, and Access.",
-        "Developed and maintained the Ice Discord bot for server management.",
-      ],
-    },
-    {
-      period: "2020 — 2021",
-      role: "Discord Bot Development",
-      company: "Personal Projects",
-      description:
-        "Started building custom automation scripts and community features for Discord.",
-      highlights: [
-        "Developed PopCorn Bot to handle community requests and automation.",
-      ],
-    },
-  ] as ExperienceItem[],
 };

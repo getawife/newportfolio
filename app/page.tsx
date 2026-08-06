@@ -1,29 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContactModal } from "@/components/ContactModal";
-import { ProjectModal } from "@/components/ProjectModal";
-import { EngineeringJourney } from "@/components/EngineeringJourney";
 import { Footer } from "@/components/Footer";
-import { PORTFOLIO_DATA, Project } from "@/config/portfolioData";
+import { PORTFOLIO_DATA } from "@/config/portfolioData";
 import { GithubIcon, LinkedinIcon } from "@/components/CustomIcons";
 import { Mail, MapPin, ArrowUpRight, Layers } from "lucide-react";
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [activeProjectModal, setActiveProjectModal] = useState<Project | null>(
-    null,
-  );
-
-  useEffect(() => {
-    document.documentElement.classList.remove("dark");
-    localStorage.setItem("theme", "light");
-  }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 transition-colors">
+    <div className="min-h-screen bg-zinc-50 text-zinc-900">
       <Navbar onOpenContact={() => setIsContactOpen(true)} />
 
       <main className="mx-auto max-w-6xl px-4 py-12 md:px-8 space-y-24">
@@ -74,16 +64,10 @@ export default function Home() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
             {PORTFOLIO_DATA.projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onSelect={(p) => setActiveProjectModal(p)}
-              />
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </section>
-
-        <EngineeringJourney />
 
         <section className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm text-center space-y-6">
           <div className="mx-auto max-w-md space-y-2">
@@ -124,11 +108,6 @@ export default function Home() {
       <ContactModal
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
-      />
-
-      <ProjectModal
-        project={activeProjectModal}
-        onClose={() => setActiveProjectModal(null)}
       />
     </div>
   );
