@@ -11,38 +11,20 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, onSelect }: ProjectCardProps) {
-  const [isLoadingDemo, setIsLoadingDemo] = useState(false);
-
-  const handleDemoClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsLoadingDemo(true);
-    setTimeout(() => {
-      setIsLoadingDemo(false);
-      if (project.liveUrl) {
-        window.open(project.liveUrl, "_blank");
-      } else if (project.githubUrl) {
-        window.open(project.githubUrl, "_blank");
-      }
-    }, 600);
-  };
-
   return (
     <div
       onClick={() => onSelect(project)}
       className="group relative flex flex-col justify-between rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-800/80 dark:bg-zinc-900/50 dark:hover:border-zinc-700/80 cursor-pointer"
     >
       <div>
-        {/* Project Title */}
         <h3 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-700 dark:group-hover:text-zinc-200 mb-1.5">
           {project.title}
         </h3>
 
-        {/* Short Description */}
         <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400 mb-3 line-clamp-2">
           {project.description}
         </p>
 
-        {/* Tags */}
         <div className="flex flex-wrap gap-1 mb-4">
           {project.tags.map((tag) => (
             <span
