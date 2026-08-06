@@ -39,7 +39,7 @@ export default function Home() {
               className="flex items-center gap-1 hover:text-zinc-900 transition-colors"
             >
               <GithubIcon className="h-3.5 w-3.5" />
-              github.com/{PORTFOLIO_DATA.profile.handle}
+              github.com/getawife
             </a>
             <span>•</span>
             <a
