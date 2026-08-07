@@ -12,7 +12,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
       <div className="mx-auto flex max-w-6xl items-center justify-end px-4 py-3 md:px-8">
         <button
           onClick={onOpenContact}
-          className="flex items-center gap-1.5 rounded-lg bg-zinc-900 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-zinc-800"
+          className="flex cursor-pointer items-center gap-1.5 rounded-lg bg-zinc-900 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-zinc-800"
         >
           <Mail className="h-3.5 w-3.5" />
           <span>Contact</span>

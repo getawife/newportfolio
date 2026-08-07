@@ -1,7 +1,6 @@
 export interface Project {
   id: string;
   title: string;
-  category: "Full Stack" | "Systems / AI" | "Web Apps" | "Tools";
   description: string;
   longDescription: string;
   tags: string[];
@@ -25,7 +24,7 @@ export interface ExperienceItem {
 export const PORTFOLIO_DATA = {
   profile: {
     location: "Karachi, Pakistan",
-    bio: "18-year-old self-taught programmer building software that changes the world.",
+    bio: "18-year-old self-taught programmer specializing in Backend development.",
     email: "huzaifa.bodyfa@gmail.com",
     github: "https://github.com/getawife",
     linkedin: "https://linkedin.com/in/huzaifaadnan",

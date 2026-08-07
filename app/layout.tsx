@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Huzaifa Adnan (@getawife) — Software Engineer & Systems Builder",
+  title: "Huzaifa Adnan — Software Engineer & Systems Builder",
   description:
     "Personal engineering portfolio of Huzaifa Adnan, an 18-year-old self-taught programmer based in Karachi, Pakistan specializing in TypeScript, Next.js, systems, and web tools.",
   keywords: [
@@ -17,8 +17,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Huzaifa Adnan", url: "https://github.com/getawife" }],
   openGraph: {
     title: "Huzaifa Adnan — Software Engineer Portfolio",
-    description:
-      "Self-taught developer crafting focused web applications, interactive software, and developer tools.",
+    description: "Self-taught developer focused on open source side projects.",
     type: "website",
   },
 };
@@ -36,4 +35,3 @@ export default function RootLayout({
     </html>
   );
 }
-
