@@ -21,7 +21,6 @@ export const SKILLS: SkillCategory[] = [
       "REST APIs",
       "WebSockets",
       "Discord.js",
-      "Python",
     ],
   },
   {
