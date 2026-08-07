@@ -50,7 +50,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         <div>
           <div className="mb-6">
             <h3 className="text-xl font-semibold tracking-tight text-zinc-900">
-              Initiate Contact
+              Thank you for reaching out!
             </h3>
             <p className="mt-1 text-xs text-zinc-500">
               Direct email:{" "}
@@ -108,7 +108,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
             <button
               type="submit"
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 py-3 text-xs font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50"
+              className="cursor-pointer flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-900 py-3 text-xs font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50"
             >
               <Send className="h-3.5 w-3.5" />
               <span>Send Message via Email</span>
