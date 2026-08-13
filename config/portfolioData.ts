@@ -52,7 +52,7 @@ export const PORTFOLIO_DATA = {
       description:
         "Decentralised, privacy-first messaging platform using P2P WebSockets.",
       tags: ["TypeScript", "Node.js", "WebSockets"],
-      githubUrl: "https://github.com/getawife/lexir",
+      githubUrl: "https://github.com/getawife/lexir-privacy",
     },
     {
       id: "hugabot",
