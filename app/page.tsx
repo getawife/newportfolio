@@ -10,7 +10,14 @@ import { PORTFOLIO_DATA } from "@/config/portfolioData";
 import { GithubIcon, LinkedinIcon } from "@/components/CustomIcons";
 import { SkillTree } from "@/components/SkillTree";
 import { SKILLS } from "@/config/skillTree";
-import { Mail, MapPin, ArrowUpRight, Layers, Code2 } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  ArrowUpRight,
+  Layers,
+  Code2,
+  BookOpen,
+} from "lucide-react";
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -56,6 +63,16 @@ export default function Home() {
                   >
                     <LinkedinIcon className="h-3.5 w-3.5" />
                     LinkedIn
+                  </a>
+                  <span>•</span>
+                  <a
+                    href="https://getawife-blog.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 hover:text-zinc-900 transition-colors"
+                  >
+                    <BookOpen className="h-3.5 w-3.5" />
+                    Blog
                   </a>
                 </div>
               </div>
