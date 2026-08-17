@@ -108,7 +108,7 @@ export default function Home() {
             transition={{ duration: 0.3 }}
             className="font-mono text-[10px] tracking-[.25em] text-[var(--accent-signal)] mb-4 uppercase"
           >
-            ◉ {PORTFOLIO_DATA.profile.location}
+            {PORTFOLIO_DATA.profile.location}
           </motion.div>
 
           <motion.h1
