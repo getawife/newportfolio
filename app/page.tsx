@@ -156,7 +156,7 @@ export default function Home() {
             </div>
             <div className="relative w-32 h-32 sm:w-40 sm:h-40 overflow-hidden border border-[var(--fg-system)]/15 bg-[var(--bg-system)]/80">
               <Image
-                src="/me.png"
+                src="/me.jpg"
                 alt={PORTFOLIO_DATA.profile.name}
                 fill
                 className="object-cover grayscale contrast-125 transition hover:grayscale-0"
