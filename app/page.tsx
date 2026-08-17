@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Command, } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Command } from "lucide-react";
 import {
   motion,
   useMotionValue,
@@ -148,20 +149,28 @@ export default function Home() {
         id="story"
         className="relative z-10 mx-auto max-w-[1500px] border-t border-[var(--fg-system)]/10 px-4 sm:px-6 py-20 sm:py-28 md:px-8 md:py-40"
       >
-        <div className="grid grid-cols-12 gap-6 lg:gap-3">
+        <div className="grid grid-cols-12 gap-6 lg:gap-3 items-center">
           <div className="col-span-12 lg:col-span-3">
-            <div className="font-mono text-[10px] tracking-[.25em] text-[var(--accent-signal)]">
+            <div className="font-mono text-[10px] tracking-[.25em] text-[var(--accent-signal)] mb-6 lg:mb-0">
               ABOUT ME
+            </div>
+            <div className="relative w-32 h-32 sm:w-40 sm:h-40 overflow-hidden border border-[var(--fg-system)]/15 bg-[var(--bg-system)]/80">
+              <Image
+                src="/me.png"
+                alt={PORTFOLIO_DATA.profile.name}
+                fill
+                className="object-cover grayscale contrast-125 transition hover:grayscale-0"
+              />
             </div>
           </div>
           <div className="col-span-12 lg:col-span-8 lg:col-start-5 space-y-8 text-xl sm:text-2xl lg:text-3xl font-normal leading-relaxed text-[var(--fg-system)]/85">
-  <p>
-    I&apos;ve been making things with computers since I was 10. What started as curiosity turned into an unhealthy habit of asking, &quot;could I build that?&quot;
-  </p>
-  <p className="text-[var(--fg-system)]/50 text-base sm:text-lg lg:text-xl">
-    These days, I build full-stack software, spend an unreasonable amount of time thinking about how systems work, and occasionally rebuild things just because I know I can do them better.
-  </p>
-</div>
+            <p>
+              I&apos;ve been making things with computers since I was 10. What started as curiosity turned into an unhealthy habit of asking, &quot;could I build that?&quot;
+            </p>
+            <p className="text-[var(--fg-system)]/50 text-base sm:text-lg lg:text-xl">
+              These days, I build full-stack software, spend an unreasonable amount of time thinking about how systems work, and occasionally rebuild things just because I know I can do them better.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -173,7 +182,7 @@ export default function Home() {
           MY WORK
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PORTFOLIO_DATA.projects.map((item, index) => (
+          {PORTFOLIO_DATA.projects.map((item) => (
             <a
               key={item.id}
               href={item.githubUrl}
@@ -274,7 +283,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-[var(--fg-system)]/70 transition hover:text-[var(--fg-system)]"
               >
-                 github
+                github
               </a>
             </div>
           </div>
