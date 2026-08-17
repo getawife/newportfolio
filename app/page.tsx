@@ -156,7 +156,7 @@ export default function Home() {
             </div>
             <div className="relative w-36 h-36 sm:w-44 sm:h-44 overflow-hidden border border-[var(--fg-system)]/15 bg-[var(--bg-system)]/80">
               <Image
-                src="/me.png"
+                src="/me.jpg"
                 alt={PORTFOLIO_DATA.profile.name}
                 fill
                 className="object-cover"
