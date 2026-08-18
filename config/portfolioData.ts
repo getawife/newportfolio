@@ -37,7 +37,7 @@ export const PORTFOLIO_DATA = {
       description:
         "Interactive murder mystery investigative game with dynamic branching logic and state-driven storytelling.",
       tags: ["TypeScript", "React"],
-      githubUrl: "https://github.com/getawife/whodidit",
+      githubUrl: "https://github.com/getawife/who-did-it",
       featured: true,
     },
     {
@@ -59,18 +59,18 @@ export const PORTFOLIO_DATA = {
       featured: true,
     },
     {
-      id: "popcorn-bot",
-      title: "PoPcorn Bot",
+      id: "lanshare",
+      title: "Lanshare",
       description:
-        "A multiple purpose Discord bot for server automation, community interaction workflows, and high-concurrency event handling.",
-      tags: ["JavaScript", "Node.js", "Discord.js"],
-      githubUrl: "https://github.com/getawife/PoPcorn-Bot",
+        "An alternative to AirDrop built to work on all major OS.",
+      tags: ["Electron", "Go", "Typescript"],
+      githubUrl: "https://github.com/getawife/lanshare",
     },
     {
       id: "ice-discord",
       title: "Ice Discord Bot",
       description:
-        "Multipurpose Discord bot with custom moderation tools, automated log routines, and sub-second command response pipelines.",
+        "Multipurpose Discord bot with custom moderation tools, automated log routines, and much more!",
       tags: ["JavaScript", "Node.js", "Discord.js"],
       githubUrl: "https://github.com/getawife/IceDiscord",
     },
@@ -83,12 +83,12 @@ export const PORTFOLIO_DATA = {
       githubUrl: "https://github.com/getawife/floppy",
     },
     {
-      id: "cloaky",
-      title: "Cloaky",
+      id: "sharksnot",
+      title: "Sharksnot",
       description:
-        "Image-generation dispatch bot integrated with Discord command structures and dynamic asset pipelines.",
+        "A server defense bot built for Discord.",
       tags: ["JavaScript", "Discord.js", "Node.js"],
-      githubUrl: "https://github.com/getawife/Cloaky",
+      githubUrl: "https://sharksnot.xyz/",
     },
   ] as Project[],
 };
