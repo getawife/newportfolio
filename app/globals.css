@@ -2,30 +2,31 @@
 
 @layer base {
   :root {
-    --bg-system: #fafaf9;
-    --fg-system: #18181b;
-    --fg-muted: #71717a;
-    --accent-signal: #2563eb;
-    --border-system: rgba(24, 24, 27, 0.08);
-  }
+    --bg-system: #f3efe7;
+    --fg-system: #171411;
+    --fg-muted: #6f665d;
 
-  @media (pointer: fine) {
-    html,
-    body,
-    * {
-      cursor: none !important;
-    }
+    --accent-signal: #e4572e;
+
+    --border-system: rgba(23, 20, 17, 0.16);
+
+    --surface-warm: #e9e1d5;
+    --surface-dark: #211c18;
   }
 
   html,
   body {
     background-color: var(--bg-system);
     color: var(--fg-system);
+
     font-family:
       "Inter",
       -apple-system,
+      BlinkMacSystemFont,
       sans-serif;
+
     overflow-x: hidden;
+
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
@@ -34,12 +35,12 @@
   button:focus-visible,
   input:focus-visible {
     outline: 2px solid var(--accent-signal);
-    outline-offset: 2px;
+    outline-offset: 3px;
   }
 
   ::selection {
     background-color: var(--accent-signal);
-    color: #ffffff;
+    color: #fff7ef;
   }
 }
 
