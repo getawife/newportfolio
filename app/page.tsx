@@ -137,30 +137,24 @@ export default function Home() {
           <header className="col-span-1 md:col-span-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--fg-muted)]">
             [ 01 — ABOUT ]
           </header>
-          <div className="col-span-1 md:col-span-8 flex flex-wrap gap-8 md:gap-16">
-            <div className="flex flex-col">
-              <span className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-none tracking-tighter">
-                18
-              </span>
-              <span className="font-mono text-[10px] tracking-[0.2em] text-[var(--fg-muted)] mt-2">
-                YEARS OLD
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-none tracking-tighter uppercase">
-                SELF
-              </span>
-              <span className="font-mono text-[10px] tracking-[0.2em] text-[var(--fg-muted)] mt-2">
-                TAUGHT
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[clamp(2.5rem,8vw,6rem)] font-bold leading-none tracking-tighter uppercase">
-                CODE
-              </span>
-              <span className="font-mono text-[10px] tracking-[0.2em] text-[var(--fg-muted)] mt-2">
-                BACKEND FOCUS
-              </span>
+          <div className="col-span-1 md:col-span-8">
+            <div className="max-w-4xl">
+              <p className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[0.95] tracking-tighter">
+                I’m an 18-year-old self-taught developer from Karachi.
+              </p>
+
+              <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <p className="font-mono text-xs leading-relaxed tracking-wide text-[var(--fg-muted)] uppercase">
+                  I started coding out of curiosity and gradually became
+                  obsessed with understanding what happens behind the interface.
+                </p>
+
+                <p className="font-mono text-xs leading-relaxed tracking-wide text-[var(--fg-muted)] uppercase">
+                  Most of my work lives around the backend, but I care about the
+                  entire experience. I like taking an idea from a rough concept
+                  to something people can actually use.
+                </p>
+              </div>
             </div>
           </div>
         </div>

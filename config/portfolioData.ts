@@ -15,7 +15,7 @@ export const PORTFOLIO_DATA = {
     title: "Full stack developer",
     location: "Karachi, Pakistan",
     locationShort: "KARACHI, PK",
-    bio: "18-year-old self-taught programmer specializing in Fullstack development.",
+    bio: "18-year-old self-taught programmer specializing in Fullstack development.\nBased in Karachi, Pakistan.",
     email: "huzaifa.bodyfa@gmail.com",
     github: "https://github.com/getawife",
     linkedin: "https://linkedin.com/in/huzaifaadnan",
