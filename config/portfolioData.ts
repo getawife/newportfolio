@@ -76,9 +76,9 @@ export const PORTFOLIO_DATA = {
     },
     {
       id: "floppy",
-      title: "Floppy Castle Game",
+      title: "Floppy",
       description:
-        "An escape-the-castle browser game engine built using vanilla JavaScript canvas mechanics and custom collision physics.",
+        "An 2D platformer browser game engine built using vanilla JavaScript canvas mechanics and custom collision physics.",
       tags: ["JavaScript", "HTML5 Canvas"],
       githubUrl: "https://github.com/getawife/floppy",
     },
