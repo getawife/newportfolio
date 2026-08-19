@@ -70,7 +70,7 @@ export default function Home() {
       "color: #2563eb; font-weight: bold;",
     );
     console.log(
-      "%c System initialized. Looking at the source code? Let's talk: huzaifa.bodyfa@gmail.com",
+      "%c Looking at the source code? Let's talk: huzaifa.bodyfa@gmail.com",
       "background: #18181b; color: #fafaf9; font-size: 11px; padding: 6px 12px; font-family: monospace;",
     );
   }, []);
