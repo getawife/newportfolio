@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { PORTFOLIO_DATA } from "@/config/portfolioData";
@@ -63,7 +64,7 @@ export default function Home() {
   / / / /_  ___________ _ (_)/ /___ _     
  / /_/ / / / /_  / __ \`/ / / / __ \`/     
 / __  / /_/ / / /_/_/ / / / / /_/ /      
-/_/ /_/\__,_/ /___/\__,_/_/_/_/\__,_/       
+/_/ /_/\__,_/ /___/\__,_/_/_/_/\__,_/     
                                           
 `,
       "color: #2563eb; font-weight: bold;",
@@ -80,8 +81,8 @@ export default function Home() {
         id="hero"
         className="relative min-h-screen w-full flex flex-col justify-between p-6 md:p-12 z-10 pt-16 pb-8"
       >
-        <div className="w-full my-auto">
-          <h1 className="text-[clamp(4.5rem,18vw,18rem)] leading-[0.8] tracking-tighter font-bold uppercase select-none">
+        <div className="w-full my-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
+          <h1 className="text-[clamp(3.5rem,13vw,14rem)] leading-[0.8] tracking-tighter font-bold uppercase select-none flex-1">
             <span className="block overflow-hidden">
               <motion.span
                 initial={prefersReducedMotion ? { y: 0 } : { y: "100%" }}
@@ -107,6 +108,22 @@ export default function Home() {
               </motion.span>
             </span>
           </h1>
+
+          <motion.div
+            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="relative shrink-0 w-full sm:w-72 md:w-80 lg:w-[320px] aspect-[4/5] overflow-hidden group"
+          >
+            <Image
+              src="/me.jpg"
+              alt={PORTFOLIO_DATA.profile.name}
+              fill
+              priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 320px, 320px"
+              className="object-cover rounded-lg"
+            />
+          </motion.div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-[var(--border-system)] pt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--fg-muted)] gap-4">
