@@ -26,7 +26,7 @@ export function AboutSection() {
         <div className="col-span-1 md:col-span-8">
           <div className="max-w-4xl">
             <AnimatedWordByWord
-              text={PORTFOLIO_DATA.profile.bio}
+              text="Hi, here's some stuff about me..."
               className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[0.95] tracking-tighter"
             />
 
