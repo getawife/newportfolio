@@ -6,6 +6,7 @@ export interface Project {
   githubUrl: string;
   liveUrl?: string;
   featured?: boolean;
+  previewUrl?: string;
 }
 
 export const PORTFOLIO_DATA = {
@@ -30,6 +31,7 @@ export const PORTFOLIO_DATA = {
       tags: ["JavaScript", "Three.js", "Web Audio API"],
       githubUrl: "https://github.com/getawife/audiovisualizer",
       featured: true,
+      previewUrl: "/previews/audiovisualizer.webp",
     },
     {
       id: "who-did-it",
@@ -39,6 +41,7 @@ export const PORTFOLIO_DATA = {
       tags: ["TypeScript", "React"],
       githubUrl: "https://github.com/getawife/who-did-it",
       featured: true,
+      previewUrl: "/previews/who-did-it.webp",
     },
     {
       id: "lexir",
@@ -48,6 +51,7 @@ export const PORTFOLIO_DATA = {
       tags: ["TypeScript", "Node.js", "WebSockets"],
       githubUrl: "https://github.com/getawife/lexir-privacy",
       featured: true,
+      previewUrl: "/previews/lexir.webp",
     },
     {
       id: "hugabot",
@@ -57,14 +61,15 @@ export const PORTFOLIO_DATA = {
       tags: ["JavaScript", "Python", "FastAPI", "AI API"],
       githubUrl: "https://github.com/getawife/hugabot",
       featured: true,
+      previewUrl: "/previews/hugabot.webp",
     },
     {
       id: "lanshare",
       title: "Lanshare",
-      description:
-        "An alternative to AirDrop built to work on all major OS.",
+      description: "An alternative to AirDrop built to work on all major OS.",
       tags: ["Electron", "Go", "Typescript"],
       githubUrl: "https://github.com/getawife/lanshare",
+      previewUrl: "/previews/lanshare.webp",
     },
     {
       id: "ice-discord",
@@ -73,6 +78,7 @@ export const PORTFOLIO_DATA = {
         "Multipurpose Discord bot with custom moderation tools, automated log routines, and much more!",
       tags: ["JavaScript", "Node.js", "Discord.js"],
       githubUrl: "https://github.com/getawife/IceDiscord",
+      previewUrl: "/previews/icediscord.webp",
     },
     {
       id: "floppy",
@@ -81,14 +87,15 @@ export const PORTFOLIO_DATA = {
         "An 2D platformer browser game engine built using vanilla JavaScript canvas mechanics and custom collision physics.",
       tags: ["JavaScript", "HTML5 Canvas"],
       githubUrl: "https://github.com/getawife/floppy",
+      previewUrl: "/previews/floppy.webp",
     },
     {
       id: "sharksnot",
       title: "Sharksnot",
-      description:
-        "A server defense bot built for Discord.",
+      description: "A server defense bot built for Discord.",
       tags: ["JavaScript", "Discord.js", "Node.js"],
       githubUrl: "https://sharksnot.xyz/",
+      previewUrl: "/previews/sharksnot.webp",
     },
   ] as Project[],
 };
