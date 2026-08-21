@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { AnimatedWordByWord } from "@/components/AnimatedWordByWord";
+import { PORTFOLIO_DATA } from "@/config/portfolioData";
 import { fadeInUpVariant, staggerContainer } from "@/constants/animations";
 
 export function AboutSection() {
@@ -25,7 +26,7 @@ export function AboutSection() {
         <div className="col-span-1 md:col-span-8">
           <div className="max-w-4xl">
             <AnimatedWordByWord
-              text="I’m an 18-year-old self-taught developer from Karachi."
+              text={PORTFOLIO_DATA.profile.bio}
               className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[0.95] tracking-tighter"
             />
 
@@ -39,9 +40,8 @@ export function AboutSection() {
 
               <motion.div variants={fadeInUpVariant}>
                 <p className="font-mono text-xs leading-relaxed tracking-wide text-[var(--fg-muted)] uppercase">
-                  Most of my work lives around the backend, but I care about the
-                  entire experience. I like taking an idea from a rough concept
-                  to something people can actually use.
+                  I have been programming since I was 11, started out with
+                  Discord bots and then branched out from there!
                 </p>
               </motion.div>
             </div>
