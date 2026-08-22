@@ -24,7 +24,7 @@ export function ContactSection() {
       >
         <motion.span
           variants={fadeInUpVariant}
-          className="font-mono text-[10px] uppercase tracking-[0.2em] mb-8 text-[var(--bg-system)]/70"
+          className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] mb-8 text-[var(--bg-system)]/70"
         >
           [ 04 — CONTACT ]
         </motion.span>

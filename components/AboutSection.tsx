@@ -18,7 +18,8 @@ export function AboutSection() {
         variants={staggerContainer}
         className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12"
       >
-        <header className="col-span-1 md:col-span-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--fg-muted)]">
+        <header className="col-span-1 md:col-span-4 font-mono text-xs md:text-sm uppercase tracking-[0.25em] font-medium text-[var(--fg-system)] opacity-80">
+          {" "}
           <motion.span variants={fadeInUpVariant} className="inline-block">
             [ 01 — ABOUT ]
           </motion.span>

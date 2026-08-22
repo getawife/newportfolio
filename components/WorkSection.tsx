@@ -21,8 +21,9 @@ export function WorkSection({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
+        // col-span-1 md:col-span-4 font-mono text-xs md:text-sm uppercase tracking-[0.25em] font-medium text-[var(--fg-system)] opacity-80
         variants={fadeInUpVariant}
-        className="px-6 md:px-12 mb-12 md:mb-20 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--fg-muted)]"
+        className="px-6 md:px-12 mb-12 md:mb-20 font-mono text-xs md:text-sm uppercase tracking-[0.25em] font-medium text-[var(--fg-system)] opacity-80"
       >
         [ 02 — WORK ]
       </motion.header>

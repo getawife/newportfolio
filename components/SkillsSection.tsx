@@ -7,7 +7,7 @@ import {
   staggerContainer,
   textRevealVariant,
 } from "@/constants/animations";
-
+//        className="px-6 md:px-12 mb-12 md:mb-20 font-mono text-xs md:text-sm uppercase tracking-[0.25em] font-medium text-[var(--fg-system)] opacity-80"
 export function SkillsSection() {
   return (
     <section
@@ -15,7 +15,7 @@ export function SkillsSection() {
       className="relative z-20 px-6 md:px-12 py-24 md:py-32 border-t border-[var(--border-system)] bg-[var(--bg-system)]"
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-        <header className="col-span-1 md:col-span-4 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--fg-muted)]">
+        <header className="col-span-1 md:col-span-4 font-mono text-xs md:text-sm uppercase tracking-[0.25em] font-medium text-[var(--fg-system)] opacity-80">
           [ 03 — SKILLS ]
         </header>
         <div className="col-span-1 md:col-span-8">
