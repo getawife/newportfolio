@@ -26,7 +26,7 @@ export function ProjectCursorPreview({
             className="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[480px] aspect-video shadow-2xl overflow-hidden rounded-lg"
           >
             <Image
-              src={hoveredProject.previewUrl}
+              src={hoveredProject.previewUrl} //add
               alt={`${hoveredProject.title} Preview`}
               fill
               sizes="480px"
