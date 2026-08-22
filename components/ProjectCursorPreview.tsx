@@ -26,7 +26,7 @@ export function ProjectCursorPreview({
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             exit={{ opacity: 0, scale: 0.6, rotate: 3 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[280px] shadow-2xl overflow-hidden rounded-lg"
+            className="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[280px] shadow-2xl overflow-hidden"
           >
             <Image
               src={hoveredProject.previewUrl}
