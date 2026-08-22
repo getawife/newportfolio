@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useMotionValue, useSpring } from "motion/react";
 import { PORTFOLIO_DATA } from "@/config/portfolioData";
 
@@ -20,22 +20,35 @@ export default function Home() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
+  const lastMousePos = useRef({ x: 0, y: 0 });
+
   const springConfig = { damping: 28, stiffness: 190, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
+      lastMousePos.current = { x: e.clientX, y: e.clientY };
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     },
     [mouseX, mouseY],
   );
 
+  const handleScroll = useCallback(() => {
+    mouseX.set(lastMousePos.current.x);
+    mouseY.set(lastMousePos.current.y);
+  }, [mouseX, mouseY]);
+
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [handleMouseMove]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleMouseMove, handleScroll]);
 
   useEffect(() => {
     console.clear();
