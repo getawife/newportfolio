@@ -2,16 +2,16 @@
 
 @layer base {
   :root {
-    --bg-system: #eee9df;
-    --fg-system: #151311;
-    --fg-muted: #716960;
+    --bg-system: #dff5e5;
+    --fg-system: #102218;
+    --fg-muted: #587062;
 
-    --accent-signal: #ff5a36;
+    --accent-signal: #2f8f5b;
 
-    --border-system: rgba(21, 19, 17, 0.18);
+    --border-system: rgba(16, 34, 24, 0.16);
 
-    --surface-warm: #e3dbce;
-    --surface-dark: #1b1815;
+    --surface-warm: #ccebd5;
+    --surface-dark: #173b27;
   }
 
   html,

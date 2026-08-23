@@ -66,7 +66,7 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-[var(--border-system)] pt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--fg-muted)] gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-[var(--border-system)] pt-8 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--fg-muted)] gap-4">
         <motion.div
           initial={
             prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 15 }

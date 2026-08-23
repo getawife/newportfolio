@@ -9,7 +9,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative z-20 px-6 md:px-12 py-24 md:py-32 border-t border-[var(--border-system)] bg-[var(--bg-system)]"
+      className="relative z-20 px-6 md:px-12 py-24 md:py-32 border-[var(--border-system)] bg-[var(--bg-system)]"
     >
       <motion.div
         initial="hidden"
