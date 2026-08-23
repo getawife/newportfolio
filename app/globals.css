@@ -19,11 +19,7 @@
     background-color: var(--bg-system);
     color: var(--fg-system);
 
-    font-family:
-      "Inter",
-      -apple-system,
-      BlinkMacSystemFont,
-      sans-serif;
+    font-family: var(--font-sans);
 
     overflow-x: hidden;
 
@@ -45,7 +41,7 @@
 }
 
 @utility font-mono {
-  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-family: var(--font-mono);
 }
 
 ::-webkit-scrollbar {
