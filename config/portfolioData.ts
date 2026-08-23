@@ -27,9 +27,9 @@ export const PORTFOLIO_DATA = {
       id: "audiovisualizer",
       title: "Audio Visualizer",
       description:
-        "Visualises audio beats in real-time using Three.js and the Web Audio API. Designed for high frame rate canvas rendering.",
+        "Visualises audio beats in real-time on the fly. Designed for high frame rate canvas rendering.",
       tags: ["JavaScript", "Three.js", "Web Audio API"],
-      githubUrl: "https://github.com/getawife/audiovisualizer",
+      githubUrl: "https://audiovisualizerr.vercel.app/",
       featured: true,
       previewUrl: "/previews/audiovisualizer.webp",
     },
@@ -39,7 +39,7 @@ export const PORTFOLIO_DATA = {
       description:
         "Interactive murder mystery investigative game with dynamic branching logic and state-driven storytelling.",
       tags: ["TypeScript", "React"],
-      githubUrl: "https://github.com/getawife/who-did-it",
+      githubUrl: "https://who-did-it-test.vercel.app",
       featured: true,
       previewUrl: "/previews/who-did-it.webp",
     },
@@ -86,7 +86,7 @@ export const PORTFOLIO_DATA = {
       description:
         "An 2D platformer browser game engine built using vanilla JavaScript canvas mechanics and custom collision physics.",
       tags: ["JavaScript", "HTML5 Canvas"],
-      githubUrl: "https://github.com/getawife/floppy",
+      githubUrl: "https://floppy-three.vercel.app/",
       previewUrl: "/previews/floppy.webp",
     },
     {
