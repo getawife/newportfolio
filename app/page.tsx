@@ -10,45 +10,11 @@ import { WorkSection } from "@/components/WorkSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
-import { ProjectCursorPreview } from "@/components/ProjectCursorPreview";
 
 export default function Home() {
   const [hoveredProject, setHoveredProject] = useState<
     (typeof PORTFOLIO_DATA.projects)[number] | null
   >(null);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const lastMousePos = useRef({ x: 0, y: 0 });
-
-  const springConfig = { damping: 28, stiffness: 190, mass: 0.5 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      lastMousePos.current = { x: e.clientX, y: e.clientY };
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    },
-    [mouseX, mouseY],
-  );
-
-  const handleScroll = useCallback(() => {
-    mouseX.set(lastMousePos.current.x);
-    mouseY.set(lastMousePos.current.y);
-  }, [mouseX, mouseY]);
-
-  useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleMouseMove, handleScroll]);
 
   useEffect(() => {
     console.clear();
@@ -80,11 +46,6 @@ export default function Home() {
       <SkillsSection />
       <ContactSection />
       <Footer />
-      <ProjectCursorPreview
-        hoveredProject={hoveredProject}
-        smoothX={smoothX}
-        smoothY={smoothY}
-      />
     </main>
   );
 }

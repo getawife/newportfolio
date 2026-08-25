@@ -7,7 +7,6 @@ import {
   staggerContainer,
   textRevealVariant,
 } from "@/constants/animations";
-//        className="px-6 md:px-12 mb-12 md:mb-20 font-mono text-xs md:text-sm uppercase tracking-[0.25em] font-medium text-[var(--fg-system)] opacity-80"
 export function SkillsSection() {
   return (
     <section
@@ -43,7 +42,7 @@ export function SkillsSection() {
                     >
                       <motion.span
                         variants={textRevealVariant}
-                        className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight uppercase inline-block origin-bottom-left"
+                        className="text-2xl sm:text-4xl md:text-4xl font-bold tracking-tight inline-block origin-bottom-left"
                       >
                         {skill}
                       </motion.span>
