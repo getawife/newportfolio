@@ -38,8 +38,9 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center w-full min-h-screen bg-white ">
       <div className="flex flex-col items-center justify-center w-full min-h-screen font-serif text-black text-center">
-        Hello, I am currently in the process of re-making the website since it's
-        been a while! Check back soon? (or not, I don't mind either way) <br />
+        👋 Hello, I am currently in the process of re-making the website since
+        it's been a while! Check back soon? (or not, I don't mind either way){" "}
+        <br />
       </div>
     </main>
   );
