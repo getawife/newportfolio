@@ -2,16 +2,17 @@
 
 :root {
   --portfolio-text: rgba(255, 255, 255, 0.96);
-  --portfolio-text-soft: rgba(255, 255, 255, 0.68);
-  --portfolio-text-muted: rgba(255, 255, 255, 0.45);
+  --portfolio-text-soft: rgba(255, 255, 255, 0.72);
+  --portfolio-text-muted: rgba(255, 255, 255, 0.58);
 
   --glass-background: rgba(10, 12, 20, 0.38);
   --glass-background-strong: rgba(10, 12, 20, 0.54);
-  --glass-border: rgba(255, 255, 255, 0.16);
   --glass-highlight: rgba(255, 255, 255, 0.1);
 
   --radius-large: 32px;
   --radius-medium: 20px;
+
+  --focus-ring: rgba(255, 255, 255, 0.95);
 }
 
 * {
@@ -20,13 +21,11 @@
 
 html {
   scroll-behavior: smooth;
-  background: #08090d;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #08090d;
   color: var(--portfolio-text);
   overflow: hidden;
 }
@@ -41,24 +40,29 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 5px;
+}
+
 .portfolio {
   position: relative;
   width: 100%;
   height: 100svh;
   overflow: hidden;
   isolation: isolate;
-  background: #08090d;
 }
 
 .portfolio-background {
   position: fixed;
   inset: 0;
   z-index: -4;
-  background-image: url("/background.gif");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   transform: scale(1.02);
+  pointer-events: none;
 }
 
 .portfolio-vignette {
@@ -66,12 +70,6 @@ a {
   inset: 0;
   z-index: -3;
   pointer-events: none;
-  background: radial-gradient(
-    circle at center,
-    rgba(10, 12, 20, 0.04) 0%,
-    rgba(10, 12, 20, 0.3) 72%,
-    rgba(5, 6, 10, 0.65) 100%
-  );
 }
 
 .portfolio-noise {
@@ -94,7 +92,12 @@ a {
   scroll-behavior: smooth;
   overscroll-behavior-y: contain;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.32) transparent;
+}
+
+.portfolio-screens:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: -4px;
 }
 
 .portfolio-screens::-webkit-scrollbar {
@@ -106,8 +109,8 @@ a {
 }
 
 .portfolio-screens::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
   border-radius: 999px;
+  background: rgba(255, 255, 255, 0.32);
 }
 
 .portfolio-screen {
@@ -118,12 +121,13 @@ a {
   display: grid;
   place-items: center;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .glass-panel {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
+
   background:
     linear-gradient(
       135deg,
@@ -131,21 +135,21 @@ a {
       rgba(255, 255, 255, 0.035) 48%,
       rgba(0, 0, 0, 0.16)
     ),
-    var(--glass-background);
-  border: 1px solid var(--glass-border);
+    rgba(10, 12, 20, 0.38);
+
   box-shadow:
-    0 40px 100px rgba(0, 0, 0, 0.32),
-    0 12px 35px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 var(--glass-highlight),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(32px) saturate(150%);
-  -webkit-backdrop-filter: blur(32px) saturate(150%);
+    0 24px 60px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
 }
 
 .glass-panel::before {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
   border-radius: inherit;
   background: linear-gradient(
@@ -164,6 +168,7 @@ a {
   left: 8%;
   right: 8%;
   height: 1px;
+  z-index: -1;
   pointer-events: none;
   background: linear-gradient(
     90deg,
@@ -218,7 +223,7 @@ a {
 .hero-title {
   position: relative;
   margin: 0;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.82);
   font-family: var(--font-display, sans-serif);
   font-size: clamp(20px, 2.4vw, 28px);
   font-weight: 500;
@@ -250,8 +255,7 @@ a {
   gap: 8px;
   min-height: 36px;
   padding: 0 14px;
-  color: rgba(255, 255, 255, 0.64);
-  border: 1px solid rgba(255, 255, 255, 0.11);
+  color: rgba(255, 255, 255, 0.68);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.045);
   font-size: 12px;
@@ -265,7 +269,7 @@ a {
   align-items: center;
   gap: 9px;
   transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.46);
+  color: rgba(255, 255, 255, 0.52);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -355,8 +359,7 @@ a {
 
 .project-tags span {
   padding: 7px 10px;
-  color: rgba(255, 255, 255, 0.62);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.66);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.045);
   font-size: 11px;
@@ -370,8 +373,7 @@ a {
   gap: 8px;
   min-height: 44px;
   padding: 0 16px;
-  color: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.94);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   box-shadow:
@@ -381,14 +383,12 @@ a {
   font-weight: 650;
   transition:
     transform 180ms ease,
-    background 180ms ease,
-    border-color 180ms ease;
+    background 180ms ease;
   white-space: nowrap;
 }
 
 .project-link:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.28);
   background: rgba(255, 255, 255, 0.13);
 }
 
@@ -426,7 +426,6 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-medium);
   background: rgba(255, 255, 255, 0.045);
   box-shadow:
@@ -436,7 +435,7 @@ a {
 
 .skill-group h3 {
   margin: 0 0 20px;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.94);
   font-family: var(--font-display, sans-serif);
   font-size: 18px;
   font-weight: 650;
@@ -452,8 +451,7 @@ a {
 
 .skill-list span {
   padding: 8px 11px;
-  color: rgba(255, 255, 255, 0.64);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.68);
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.13);
   font-size: 12px;
@@ -484,8 +482,7 @@ a {
   gap: 10px;
   max-width: 100%;
   padding: 15px 18px;
-  color: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.92);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.065);
   box-shadow:
@@ -515,7 +512,7 @@ a {
   align-items: center;
   gap: 6px;
   padding: 9px 13px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.58);
   font-size: 12px;
   transition:
     color 180ms ease,
@@ -523,7 +520,7 @@ a {
 }
 
 .contact-links a:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.94);
   transform: translateY(-1px);
 }
 
@@ -653,6 +650,12 @@ a {
 
   .portfolio-screens {
     scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+
+  .glass-panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .project-link,

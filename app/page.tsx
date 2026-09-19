@@ -15,10 +15,19 @@ export default function Home() {
   );
   return (
     <main className="portfolio">
-      <div className="portfolio-background" aria-hidden="true" />
+      <video
+        className="portfolio-background"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="/background.mp4" type="video/mp4" />
+      </video>{" "}
       <div className="portfolio-vignette" aria-hidden="true" />
       <div className="portfolio-noise" aria-hidden="true" />
-
       <div className="portfolio-screens">
         <section className="portfolio-screen hero-screen">
           <motion.div
