@@ -122,16 +122,16 @@ export default function Home() {
 
         <section className="portfolio-screen skills-screen">
           <motion.div
-            className="glass-panel skills-panel"
+            className="glass-panel skills-panel skills-glass"
             initial={{ opacity: 0, scale: 0.96, y: 35 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease }}
           >
+            {" "}
             <div className="section-heading">
               <h2>What I work with</h2>
             </div>
-
             <div className="skills-grid">
               {SKILLS.map((category) => (
                 <div className="skill-group" key={category.title}>
