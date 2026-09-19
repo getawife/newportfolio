@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
-import { Manrope, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-  weight: ["400", "700"],
-});
-
 export const metadata: Metadata = {
-  title: "HUZAIFA",
-  description: "Programmer.",
+  title: "Huzaifa Adnan — Fullstack Developer",
+  description:
+    "18-year-old self-taught programmer specializing in Fullstack development. Based in Karachi, Pakistan.",
+  authors: [{ name: "Huzaifa Adnan", url: "https://github.com/getawife" }],
+  openGraph: {
+    title: "Huzaifa Adnan — Fullstack Developer",
+    description:
+      "18-year-old self-taught programmer specializing in Fullstack development. Based in Karachi, Pakistan.",
+    siteName: "Huzaifa Adnan",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -26,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${spaceMono.variable}`}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

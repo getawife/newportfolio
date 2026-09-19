@@ -16,10 +16,10 @@ export const PORTFOLIO_DATA = {
     title: "Full stack developer",
     location: "Karachi, Pakistan",
     locationShort: "KARACHI, PK",
-    bio: "18-year-old self-taught programmer specializing in Fullstack development.\nBased in Karachi, Pakistan.",
+    bio: "18-year-old self-taught programmer.",
     email: "huzaifa.bodyfa@gmail.com",
     github: "https://github.com/getawife",
-    linkedin: "https://linkedin.com/in/huzaifaadnan",
+    linkedin: "https://www.linkedin.com/in/huzaifaadnankiyani/",
   },
 
   projects: [
@@ -83,8 +83,7 @@ export const PORTFOLIO_DATA = {
     {
       id: "floppy",
       title: "Floppy",
-      description:
-        "An 2D platformer browser game engine built using vanilla JavaScript canvas mechanics and custom collision physics.",
+      description: "An 2D platformer browser game engine built on the web.",
       tags: ["JavaScript", "HTML5 Canvas"],
       githubUrl: "https://floppy-three.vercel.app/",
       previewUrl: "/previews/floppy.webp",
@@ -92,7 +91,7 @@ export const PORTFOLIO_DATA = {
     {
       id: "sharksnot",
       title: "Sharksnot",
-      description: "A server defense bot built for Discord.",
+      description: "A server moderation bot built for Discord.",
       tags: ["JavaScript", "Discord.js", "Node.js"],
       githubUrl: "https://sharksnot.xyz/",
       previewUrl: "/previews/sharksnot.webp",
