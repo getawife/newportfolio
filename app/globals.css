@@ -70,6 +70,7 @@ a {
   inset: 0;
   z-index: -3;
   pointer-events: none;
+  background: rgba(0, 0, 0, 0.16);
 }
 
 .portfolio-noise {
@@ -127,24 +128,20 @@ a {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-
   background:
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.11),
-      rgba(255, 255, 255, 0.035) 48%,
-      rgba(0, 0, 0, 0.16)
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.025) 48%,
+      rgba(0, 0, 0, 0.22)
     ),
-    rgba(10, 12, 20, 0.38);
-
+    rgba(6, 8, 14, 0.58);
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-
+    0 24px 60px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(14px) saturate(130%);
   -webkit-backdrop-filter: blur(14px) saturate(130%);
 }
-
 .glass-panel::before {
   content: "";
   position: absolute;
@@ -154,10 +151,10 @@ a {
   border-radius: inherit;
   background: linear-gradient(
     120deg,
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.06),
     transparent 25%,
     transparent 70%,
-    rgba(255, 255, 255, 0.025)
+    rgba(255, 255, 255, 0.015)
   );
 }
 
