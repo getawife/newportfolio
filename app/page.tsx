@@ -156,8 +156,6 @@ export default function Home() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease }}
           >
-            <p className="eyebrow">Get in touch</p>
-
             <h2>Let&apos;s build something.</h2>
 
             <a className="contact-email" href={`mailto:${profile.email}`}>
