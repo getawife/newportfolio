@@ -129,7 +129,6 @@ export default function Home() {
             transition={{ duration: 0.8, ease }}
           >
             <div className="section-heading">
-              <p className="eyebrow">Technical stack</p>
               <h2>What I work with</h2>
             </div>
 
