@@ -122,7 +122,7 @@ export default function Home() {
 
         <section className="portfolio-screen skills-screen">
           <motion.div
-            className="glass-panel skills-panel skills-glass"
+            className="glass-panel skills-panel "
             initial={{ opacity: 0, scale: 0.96, y: 35 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
