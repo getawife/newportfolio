@@ -1,8 +1,10 @@
 "use client";
 
-import { ArrowDown, ArrowUpRight, Code2, Mail, MapPin } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowDown, ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { PORTFOLIO_DATA } from "@/config/portfolioData";
 import { SKILLS } from "@/config/skillTree";
 
@@ -13,6 +15,25 @@ export default function Home() {
   const featuredProjects = projects.filter((project) =>
     ["sharksnot", "lanshare", "floppy", "lexir"].includes(project.id),
   );
+
+  const contactRef = useRef<HTMLElement | null>(null);
+  const [dockHidden, setDockHidden] = useState(false);
+
+  useEffect(() => {
+    const node = contactRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setDockHidden(entry.isIntersecting),
+      { threshold: 0.35 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  const bioLines = profile.bio.split("\n");
+
   return (
     <main className="portfolio">
       <video
@@ -25,9 +46,39 @@ export default function Home() {
         aria-hidden="true"
       >
         <source src="/background.mp4" type="video/mp4" />
-      </video>{" "}
+      </video>
+
       <div className="portfolio-vignette" aria-hidden="true" />
       <div className="portfolio-noise" aria-hidden="true" />
+
+      <motion.div
+        className="social-dock"
+        initial={{ opacity: 1, y: 0 }}
+        animate={{
+          opacity: dockHidden ? 0 : 1,
+          y: dockHidden ? -14 : 0,
+        }}
+        transition={{ duration: 0.5, ease }}
+        style={{ pointerEvents: dockHidden ? "none" : "auto" }}
+      >
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub"
+        >
+          <FaGithub />
+        </a>
+        <a
+          href={profile.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+        >
+          <FaLinkedin />
+        </a>
+      </motion.div>
+
       <div className="portfolio-screens">
         <section className="portfolio-screen hero-screen">
           <motion.div
@@ -50,10 +101,10 @@ export default function Home() {
             <p className="hero-title">{profile.title}</p>
 
             <p className="hero-bio">
-              {profile.bio.split("\n").map((line, index) => (
-                <span key={line}>
+              {bioLines.map((line, index) => (
+                <span key={`${line}-${index}`}>
                   {line}
-                  {index < profile.bio.split("\n").length - 1 && <br />}
+                  {index < bioLines.length - 1 && <br />}
                 </span>
               ))}
             </p>
@@ -77,7 +128,7 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {featuredProjects.map((project, index) => (
+        {featuredProjects.map((project) => (
           <section className="portfolio-screen project-screen" key={project.id}>
             <motion.article
               className="glass-panel project-panel"
@@ -122,13 +173,12 @@ export default function Home() {
 
         <section className="portfolio-screen skills-screen">
           <motion.div
-            className="glass-panel skills-panel "
+            className="glass-panel skills-panel"
             initial={{ opacity: 0, scale: 0.96, y: 35 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease }}
           >
-            {" "}
             <div className="section-heading">
               <h2>What I work with</h2>
             </div>
@@ -148,7 +198,7 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section className="portfolio-screen contact-screen">
+        <section className="portfolio-screen contact-screen" ref={contactRef}>
           <motion.div
             className="glass-panel contact-panel"
             initial={{ opacity: 0, scale: 0.95, y: 35 }}
