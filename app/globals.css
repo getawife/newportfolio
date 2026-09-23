@@ -520,23 +520,27 @@ a {
 
 @media (max-width: 900px) {
   .project-panel {
-    height: min(820px, 90svh);
+    height: auto;
+    min-height: 88svh;
+  }
+
+  .project-preview {
+    flex: none;
+    aspect-ratio: 16 / 10;
   }
 
   .project-information {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .project-description {
-    display: none;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    text-align: center;
   }
 
   .project-tags {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .project-link {
-    justify-self: end;
+    justify-self: center;
   }
 
   .skills-grid {
@@ -550,7 +554,9 @@ a {
 
 @media (max-width: 600px) {
   .portfolio-screen {
-    padding: 22px 14px;
+    padding: 72px 14px 40px;
+    place-items: center;
+    align-content: center;
   }
 
   .hero-panel {
@@ -576,14 +582,16 @@ a {
 
   .project-panel {
     width: 96vw;
-    height: 91svh;
+    height: auto;
+    min-height: 0;
     padding: 12px;
     gap: 14px;
     border-radius: 24px;
   }
 
   .project-preview {
-    min-height: 0;
+    flex: none;
+    aspect-ratio: 16 / 10;
     border-radius: 17px;
   }
 
@@ -600,6 +608,12 @@ a {
     font-size: 31px;
   }
 
+  .project-description {
+    display: block;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
   .project-tags {
     justify-content: center;
   }
@@ -608,10 +622,17 @@ a {
     width: 100%;
   }
 
+  .skills-screen {
+    min-height: 100svh;
+    padding: 72px 14px 40px;
+    place-items: center;
+    align-content: center;
+  }
+
   .skills-panel {
     width: 96vw;
-    max-height: 90svh;
-    overflow-y: auto;
+    max-height: none;
+    overflow: visible;
     padding: 34px 18px;
     border-radius: 24px;
   }
