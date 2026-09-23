@@ -1,14 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Mail, MapPin } from "lucide-react";
-import { motion } from "motion/react";
+import { ArrowDown, ArrowUpRight, Mail, MapPin, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { PORTFOLIO_DATA } from "@/config/portfolioData";
 import { SKILLS } from "@/config/skillTree";
 
 const ease = [0.16, 1, 0.3, 1] as const;
+
+const NAV_ITEMS = [
+  { id: "hero", label: "Home" },
+  { id: "work", label: "Work" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Home() {
   const { profile, projects } = PORTFOLIO_DATA;
@@ -17,7 +24,10 @@ export default function Home() {
   );
 
   const contactRef = useRef<HTMLElement | null>(null);
+  const screensRef = useRef<HTMLDivElement | null>(null);
   const [dockHidden, setDockHidden] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const node = contactRef.current;
@@ -31,6 +41,45 @@ export default function Home() {
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const container = screensRef.current;
+    if (!container) return;
+
+    const sections = container.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { root: container, threshold: 0.5 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!navOpen) return;
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setNavOpen(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [navOpen]);
+
+  const handleNavClick = (id: string) => {
+    const container = screensRef.current;
+    if (!container) return;
+    const target = container.querySelector(`#${id}`);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setNavOpen(false);
+  };
 
   const bioLines = profile.bio.split("\n");
 
@@ -53,12 +102,12 @@ export default function Home() {
 
       <motion.div
         className="social-dock"
-        initial={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -14 }}
         animate={{
           opacity: dockHidden ? 0 : 1,
           y: dockHidden ? -14 : 0,
         }}
-        transition={{ duration: 0.5, ease }}
+        transition={{ duration: 0.7, ease, delay: 0.2 }}
         style={{ pointerEvents: dockHidden ? "none" : "auto" }}
       >
         <a
@@ -79,8 +128,75 @@ export default function Home() {
         </a>
       </motion.div>
 
-      <div className="portfolio-screens">
-        <section className="portfolio-screen hero-screen">
+      <motion.div
+        className="side-nav"
+        initial={{ opacity: 0, y: -14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease, delay: 0.2 }}
+      >
+        <button
+          type="button"
+          className="side-nav-toggle"
+          aria-label={navOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={navOpen}
+          onClick={() => setNavOpen((value) => !value)}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {navOpen ? (
+              <motion.span
+                key="close"
+                initial={{ opacity: 0, rotate: -45 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 45 }}
+                transition={{ duration: 0.2, ease }}
+              >
+                <X size={20} />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="menu"
+                initial={{ opacity: 0, rotate: 45 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: -45 }}
+                transition={{ duration: 0.2, ease }}
+              >
+                <Menu size={20} />
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </button>
+
+        <AnimatePresence>
+          {navOpen && (
+            <motion.nav
+              className="side-nav-menu"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.35, ease }}
+            >
+              <ul>
+                {NAV_ITEMS.map((item) => (
+                  <li key={item.id}>
+                    <button
+                      type="button"
+                      onClick={() => handleNavClick(item.id)}
+                      className={
+                        activeSection === item.id ? "is-active" : undefined
+                      }
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
+      <div className="portfolio-screens" ref={screensRef}>
+        <section id="hero" className="portfolio-screen hero-screen">
           <motion.div
             className="glass-panel hero-panel"
             initial={{ opacity: 0, scale: 0.94, y: 30 }}
@@ -128,9 +244,10 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {featuredProjects.map((project) => (
-          <section className="portfolio-screen project-screen" key={project.id}>
+        <section id="work" className="portfolio-screen project-screen">
+          {featuredProjects.map((project) => (
             <motion.article
+              key={project.id}
               className="glass-panel project-panel"
               initial={{ opacity: 0, y: 50, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -168,10 +285,10 @@ export default function Home() {
                 </a>
               </div>
             </motion.article>
-          </section>
-        ))}
+          ))}
+        </section>
 
-        <section className="portfolio-screen skills-screen">
+        <section id="skills" className="portfolio-screen skills-screen">
           <motion.div
             className="glass-panel skills-panel"
             initial={{ opacity: 0, scale: 0.96, y: 35 }}
@@ -198,7 +315,11 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section className="portfolio-screen contact-screen" ref={contactRef}>
+        <section
+          id="contact"
+          className="portfolio-screen contact-screen"
+          ref={contactRef}
+        >
           <motion.div
             className="glass-panel contact-panel"
             initial={{ opacity: 0, scale: 0.95, y: 35 }}
