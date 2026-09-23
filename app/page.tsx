@@ -1,7 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, Mail, MapPin, Menu, X } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Check,
+  Copy,
+  Mail,
+  MapPin,
+  Menu,
+  X,
+} from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -28,6 +37,7 @@ export default function Home() {
   const [dockHidden, setDockHidden] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const node = contactRef.current;
@@ -79,6 +89,16 @@ export default function Home() {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
     setNavOpen(false);
+  };
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
   };
 
   const bioLines = profile.bio.split("\n");
@@ -329,11 +349,44 @@ export default function Home() {
           >
             <h2>Let&apos;s build something.</h2>
 
-            <a className="contact-email" href={`mailto:${profile.email}`}>
-              <Mail size={20} />
-              {profile.email}
-              <ArrowUpRight size={18} />
-            </a>
+            <div className="contact-email-wrap">
+              <a className="contact-email" href={`mailto:${profile.email}`}>
+                <Mail size={20} />
+                {profile.email}
+                <ArrowUpRight size={18} />
+              </a>
+
+              <button
+                type="button"
+                className="contact-copy"
+                onClick={handleCopyEmail}
+                aria-label={copied ? "Email copied" : "Copy email address"}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {copied ? (
+                    <motion.span
+                      key="check"
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.6 }}
+                      transition={{ duration: 0.2, ease }}
+                    >
+                      <Check size={16} />
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="copy"
+                      initial={{ opacity: 0, scale: 0.6 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.6 }}
+                      transition={{ duration: 0.2, ease }}
+                    >
+                      <Copy size={16} />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </button>
+            </div>
 
             <div className="contact-links">
               <a href={profile.github} target="_blank" rel="noreferrer">
