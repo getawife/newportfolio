@@ -7,44 +7,46 @@ import {
   Check,
   Copy,
   Mail,
-  MapPin,
   Menu,
   X,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { PORTFOLIO_DATA } from "@/config/portfolioData";
-import { SKILLS } from "@/config/skillTree";
+import { portfolioData } from "@/config/portfolioData";
+import { skills } from "@/config/skillTree";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const NAV_ITEMS = [
+const nav_items = [
   { id: "hero", label: "Home" },
   { id: "work", label: "Work" },
   { id: "skills", label: "Skills" },
   { id: "contact", label: "Contact" },
 ];
 
+const apple_pin_url =
+  "https://cdn.jsdelivr.net/npm/emoji-datasource-apple@15.1.2/img/apple/64/1f4cd.png";
+
 export default function Home() {
-  const { profile, projects } = PORTFOLIO_DATA;
-  const featuredProjects = projects.filter((project) =>
+  const { profile, projects } = portfolioData;
+  const featured_projects = projects.filter((project) =>
     ["sharksnot", "lanshare", "floppy", "lexir"].includes(project.id),
   );
 
-  const contactRef = useRef<HTMLElement | null>(null);
-  const screensRef = useRef<HTMLDivElement | null>(null);
-  const [dockHidden, setDockHidden] = useState(false);
-  const [navOpen, setNavOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
-  const [copied, setCopied] = useState(false);
+  const contact_ref = useRef<HTMLElement | null>(null);
+  const screens_ref = useRef<HTMLDivElement | null>(null);
+  const [dock_hidden, set_dock_hidden] = useState(false);
+  const [nav_open, set_nav_open] = useState(false);
+  const [active_section, set_active_section] = useState("hero");
+  const [copied, set_copied] = useState(false);
 
   useEffect(() => {
-    const node = contactRef.current;
+    const node = contact_ref.current;
     if (!node) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setDockHidden(entry.isIntersecting),
+      ([entry]) => set_dock_hidden(entry.isIntersecting),
       { threshold: 0.35 },
     );
 
@@ -53,7 +55,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const container = screensRef.current;
+    const container = screens_ref.current;
     if (!container) return;
 
     const sections = container.querySelectorAll("section[id]");
@@ -61,7 +63,7 @@ export default function Home() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            set_active_section(entry.target.id);
           }
         });
       },
@@ -73,35 +75,35 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (!navOpen) return;
-    const handleKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setNavOpen(false);
+    if (!nav_open) return;
+    const handle_key = (event: KeyboardEvent) => {
+      if (event.key === "Escape") set_nav_open(false);
     };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [navOpen]);
+    window.addEventListener("keydown", handle_key);
+    return () => window.removeEventListener("keydown", handle_key);
+  }, [nav_open]);
 
-  const handleNavClick = (id: string) => {
-    const container = screensRef.current;
+  const handle_nav_click = (id: string) => {
+    const container = screens_ref.current;
     if (!container) return;
     const target = container.querySelector(`#${id}`);
     if (target) {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setNavOpen(false);
+    set_nav_open(false);
   };
 
-  const handleCopyEmail = async () => {
+  const handle_copy_email = async () => {
     try {
       await navigator.clipboard.writeText(profile.email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
+      set_copied(true);
+      window.setTimeout(() => set_copied(false), 2000);
     } catch {
-      setCopied(false);
+      set_copied(false);
     }
   };
 
-  const bioLines = profile.bio.split("\n");
+  const bio_lines = profile.bio.split("\n");
 
   return (
     <main className="portfolio">
@@ -124,11 +126,11 @@ export default function Home() {
         className="social-dock"
         initial={{ opacity: 0, y: -14 }}
         animate={{
-          opacity: dockHidden ? 0 : 1,
-          y: dockHidden ? -14 : 0,
+          opacity: dock_hidden ? 0 : 1,
+          y: dock_hidden ? -14 : 0,
         }}
         transition={{ duration: 0.7, ease, delay: 0.2 }}
-        style={{ pointerEvents: dockHidden ? "none" : "auto" }}
+        style={{ pointerEvents: dock_hidden ? "none" : "auto" }}
       >
         <a
           href={profile.github}
@@ -157,12 +159,12 @@ export default function Home() {
         <button
           type="button"
           className="side-nav-toggle"
-          aria-label={navOpen ? "Close navigation" : "Open navigation"}
-          aria-expanded={navOpen}
-          onClick={() => setNavOpen((value) => !value)}
+          aria-label={nav_open ? "Close navigation" : "Open navigation"}
+          aria-expanded={nav_open}
+          onClick={() => set_nav_open((value) => !value)}
         >
           <AnimatePresence mode="wait" initial={false}>
-            {navOpen ? (
+            {nav_open ? (
               <motion.span
                 key="close"
                 initial={{ opacity: 0, rotate: -45 }}
@@ -187,7 +189,7 @@ export default function Home() {
         </button>
 
         <AnimatePresence>
-          {navOpen && (
+          {nav_open && (
             <motion.nav
               className="side-nav-menu"
               initial={{ opacity: 0, x: 20 }}
@@ -196,13 +198,13 @@ export default function Home() {
               transition={{ duration: 0.35, ease }}
             >
               <ul>
-                {NAV_ITEMS.map((item) => (
+                {nav_items.map((item) => (
                   <li key={item.id}>
                     <button
                       type="button"
-                      onClick={() => handleNavClick(item.id)}
+                      onClick={() => handle_nav_click(item.id)}
                       className={
-                        activeSection === item.id ? "is-active" : undefined
+                        active_section === item.id ? "is-active" : undefined
                       }
                     >
                       {item.label}
@@ -215,7 +217,7 @@ export default function Home() {
         </AnimatePresence>
       </motion.div>
 
-      <div className="portfolio-screens" ref={screensRef}>
+      <div className="portfolio-screens" ref={screens_ref}>
         <section id="hero" className="portfolio-screen hero-screen">
           <motion.div
             className="glass-panel hero-panel"
@@ -237,17 +239,24 @@ export default function Home() {
             <p className="hero-title">{profile.title}</p>
 
             <p className="hero-bio">
-              {bioLines.map((line, index) => (
+              {bio_lines.map((line, index) => (
                 <span key={`${line}-${index}`}>
                   {line}
-                  {index < bioLines.length - 1 && <br />}
+                  {index < bio_lines.length - 1 && <br />}
                 </span>
               ))}
             </p>
 
             <div className="hero-meta">
-              <span>
-                <MapPin size={15} />
+              <span className="hero-meta-item">
+                <img
+                  className="hero-pin-emoji"
+                  src={apple_pin_url}
+                  alt=""
+                  width={14}
+                  height={14}
+                  aria-hidden="true"
+                />
                 {profile.location}
               </span>
             </div>
@@ -265,7 +274,7 @@ export default function Home() {
         </section>
 
         <section id="work" className="portfolio-screen project-screen">
-          {featuredProjects.map((project) => (
+          {featured_projects.map((project) => (
             <motion.article
               key={project.id}
               className="glass-panel project-panel"
@@ -320,7 +329,7 @@ export default function Home() {
               <h2>What I work with</h2>
             </div>
             <div className="skills-grid">
-              {SKILLS.map((category) => (
+              {skills.map((category) => (
                 <div className="skill-group" key={category.title}>
                   <h3>{category.title}</h3>
 
@@ -338,7 +347,7 @@ export default function Home() {
         <section
           id="contact"
           className="portfolio-screen contact-screen"
-          ref={contactRef}
+          ref={contact_ref}
         >
           <motion.div
             className="glass-panel contact-panel"
@@ -359,7 +368,7 @@ export default function Home() {
               <button
                 type="button"
                 className="contact-copy"
-                onClick={handleCopyEmail}
+                onClick={handle_copy_email}
                 aria-label={copied ? "Email copied" : "Copy email address"}
               >
                 <AnimatePresence mode="wait" initial={false}>

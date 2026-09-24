@@ -3,7 +3,7 @@ export interface SkillCategory {
   skills: string[];
 }
 
-export const SKILLS: SkillCategory[] = [
+export const skills: SkillCategory[] = [
   {
     title: "Languages",
     skills: ["JavaScript", "TypeScript", "Python", "HTML", "CSS", "GO"],

@@ -9,7 +9,7 @@ export interface Project {
   previewUrl?: string;
 }
 
-export const PORTFOLIO_DATA = {
+export const portfolioData = {
   profile: {
     name: "Huzaifa",
     fullName: "Huzaifa Adnan",
