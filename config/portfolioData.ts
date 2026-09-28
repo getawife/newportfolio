@@ -29,7 +29,7 @@ export const portfolioData = {
       description:
         "Visualises audio beats in real-time on the fly. Designed for high frame rate canvas rendering.",
       tags: ["JavaScript", "Three.js", "Web Audio API"],
-      githubUrl: "https://audiovisualizerr.vercel.app/",
+      githubUrl: "https://github.com/getawife/audiovisualizer",
       featured: true,
       previewUrl: "/previews/audiovisualizer.webp",
     },
@@ -85,7 +85,7 @@ export const portfolioData = {
       title: "Floppy",
       description: "An 2D platformer browser game engine built on the web.",
       tags: ["JavaScript", "HTML5 Canvas"],
-      githubUrl: "https://floppy-three.vercel.app/",
+      githubUrl: "https://github.com/getawife/floppy/",
       previewUrl: "/previews/floppy.webp",
     },
     {
